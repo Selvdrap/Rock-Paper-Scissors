@@ -1,0 +1,197 @@
+@font-face {
+  font-family: "Dreams";
+  src: url("../fonts/fofbb_reg.woff") format('woff');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Dreams';
+}
+
+
+.wrapper {
+  height: 100vh;
+  padding: 20px;
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+}
+
+.flex-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.flex-item {
+  max-height: 100%;
+  height: 100%;
+  margin: 0 20px;
+  text-align: center;
+  color: fuchsia;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-item h1 {
+  font-size: 350%;
+}
+
+.flex-item b {
+  font-size: 40px;
+}
+
+.points {
+  display: flex;
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.points__title {
+  font-size: 200%;
+  color: #000;
+}
+
+.points__wrapper {
+  width: 100%;
+}
+
+.fa-star {
+  color: #240b36;
+  font-size: 50px !important;
+}
+
+.points__player--first .fa-star.checked {
+  color: slateblue;
+}
+
+.points__player--second .fa-star.checked {
+  color: #e61e4e;
+}
+
+.player {
+  border: 5px solid slateblue;
+  border-radius: 8px;
+  color: slateblue;
+  flex: 0 1 calc(20% - 40px);
+}
+
+.panel {
+  flex: 1 1 calc(40% - 40px);
+}
+
+.player--opponent {
+  border-color: #e61e4e;
+  color: #e61e4e;
+}
+
+.player h1 {
+  position: absolute;
+  bottom:0;
+}
+
+.player__options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 70%;
+}
+
+.player__options a {
+  display: block;
+  height: 100px;
+  width: 100px;
+}
+
+.player .player__options svg {
+  filter: grayscale(60%);
+  transition: all 0.2s;
+  pointer-events: none;
+}
+
+.player .player__options a:hover svg {
+  filter: grayscale(0%);
+}
+
+.player .player__options svg {
+  fill: slateblue;
+}
+
+.player--opponent .player__options svg {
+  fill: #e61e4e;
+}
+
+.arena {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arena__button {
+  font-family: 'Dreams';
+  font-size: 300%;
+
+  background: linear-gradient(135deg, #6a5acd, #e61e4e);
+	background-size: 100% 100%;
+	-webkit-animation: Gradient 1s ease infinite;
+	-moz-animation: Gradient 1s ease infinite;
+	animation: Gradient 1s ease infinite;
+  padding: 10px 50px;
+  border-color: fuchsia;
+  outline: 0;
+  border-radius: 8px;
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.arena__player, .arena__opponent {
+  height: 200px;
+  flex: 1 0 33.3%;
+}
+
+.arena__default svg {
+  height: 100%;
+  width: auto;
+}
+
+.arena__vs {
+  font-size: 400%;
+  flex: 1 1 33.3%;
+}
+
+.opponent__choice {
+  pointer-events: none;
+}
+
+
+@media only screen and (min-width: 1300px) and (max-width: 1600px) {
+  .player {
+    flex-basis: calc(25% - 40px);
+  }
+}
