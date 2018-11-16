@@ -69,11 +69,11 @@ html, body {
   font-size: 50px !important;
 }
 
-.points__player--first .fa-star.checked {
+.points__player--human .fa-star.checked {
   color: slateblue;
 }
 
-.points__player--second .fa-star.checked {
+.points__player--computer .fa-star.checked {
   color: #e61e4e;
 }
 
@@ -146,7 +146,6 @@ html, body {
 .arena__button {
   font-family: 'Dreams';
   font-size: 300%;
-
   background: linear-gradient(135deg, #6a5acd, #e61e4e);
 	background-size: 100% 100%;
 	-webkit-animation: Gradient 1s ease infinite;
@@ -173,6 +172,7 @@ html, body {
 .arena__player, .arena__opponent {
   height: 200px;
   flex: 1 0 33.3%;
+  animation-duration: 2s;
 }
 
 .arena__default svg {
