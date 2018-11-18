@@ -159,6 +159,7 @@ function announceWinner(pl) {
 }
 
 function resetChoices() {
+  players.forEach(pl => pl.choice = null);
   sides.forEach(s => s.innerHTML = '');
   sides.forEach(side => {
     let clonedTemplate = questionTemplate.content.cloneNode(true);
