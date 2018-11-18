@@ -9,11 +9,11 @@ const arenaOpponent = d.querySelector('.arena__opponent');
 const sides = [...d.querySelectorAll('.arena__default')];
 const play = d.querySelector('.arena__button');
 const stars = [...d.querySelectorAll('.fa-star')];
-let humanStars = [...d.querySelectorAll('.points__player--human .fa-star')];
-let computerStars = [...d.querySelectorAll('.points__player--computer .fa-star')];
+const humanStars = [...d.querySelectorAll('.points__player--human .fa-star')];
+const computerStars = [...d.querySelectorAll('.points__player--computer .fa-star')];
 const players = [
-  {type: 'human', choice: null, wins: 0, stars: humanStars, img: arenaPlayer}, 
-  {type: 'computer', choice: null, wins: 0, stars: computerStars, img: arenaOpponent}
+  {type: 'Human', choice: null, wins: 0, stars: humanStars, img: arenaPlayer}, 
+  {type: 'Computer', choice: null, wins: 0, stars: computerStars, img: arenaOpponent}
 ];
 let map = {};
 
@@ -68,7 +68,19 @@ function setChoice(ch) {
 }
 
 function randomFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  function shuffle(a) {
+    let j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+  }
+  let temp = arr.slice();  
+
+  return shuffle(temp)[Math.floor(Math.random() * arr.length)];
 }
 
 function setComputerChoice() {
@@ -115,12 +127,13 @@ function makeTurn() {
 }
 
 function animateChoice(winner, looser) {
-  winner.classList.add('bounceIn');
-  looser.classList.add('hinge');
+  winner.classList.add('zoomIn');
+  looser.classList.add('swing');
   playerLinks.forEach(link => link.style.pointerEvents = 'none');
+  play.style.pointerEvents = 'none';
   setTimeout(function() {
-    winner.classList.remove('bounceIn');
-    looser.classList.remove('hinge');
+    winner.classList.remove('zoomIn');
+    looser.classList.remove('swing');
   }, 2000);
 }
 
@@ -152,6 +165,7 @@ function resetChoices() {
     side.appendChild(clonedTemplate);
   });
   playerLinks.forEach(link => link.style.pointerEvents = 'auto');
+  play.style.pointerEvents = 'auto';
 }
 
 function resetWins() {

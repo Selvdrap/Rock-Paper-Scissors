@@ -125,11 +125,11 @@ html, body {
   filter: grayscale(0%);
 }
 
-.player .player__options svg {
+.player .player__options svg, .arena__player svg {
   fill: slateblue;
 }
 
-.player--opponent .player__options svg {
+.player--opponent .player__options svg, .arena__opponent svg {
   fill: #e61e4e;
 }
 
@@ -193,5 +193,52 @@ html, body {
 @media only screen and (min-width: 1300px) and (max-width: 1600px) {
   .player {
     flex-basis: calc(25% - 40px);
+  }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1400px) {
+  .player h1 {
+    font-size: 250%;
+  }
+}
+
+@media only screen and (width: 1024px) {
+  .player h1 {
+    font-size: 160%;
+    bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .player {
+    width: 70%;
+    align-items: stretch;
+    order: 100;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .player h1 {
+    display: none;
+  }
+  .player--opponent {
+    display: none;
+  }
+  .player__options {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .arena__default {
+    height: 150px;
+  }
+  .arena__button {
+    order: 100;
+  }
+  .fa {
+    color: #4f3b5e;
+    font-size: 35px;
   }
 }
