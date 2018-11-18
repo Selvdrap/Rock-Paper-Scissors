@@ -45,26 +45,31 @@ function playerOptionsClickHandler(e) {
   e.preventDefault();
 }
 
+function cloneTemplate(player) {
+  for(let i = 0; i < templates.length; i++) {
+    if(templates[i].id === player.choice) {
+      let clonedTemplate = templates[i].content.cloneNode(true);
+      if(player.img.hasChildNodes()) {
+        // player.img.removeChild(player.firstChild);
+        player.img.innerHTML = '';
+      } 
+      player.img.appendChild(clonedTemplate);
+
+      break;
+    }
+  }
+}
+
 function getChoice(data) {
   let choice = data.getAttribute('data-player-choice');
+  
   return choice;
 }
 
 function setChoice(ch) {
   const type = getChoice(ch);
-  for(let i = 0; i < templates.length; i++) {
-    if(templates[i].id === type) {
-      let clonedTemplate = templates[i].content.cloneNode(true);
-      if(arenaPlayer.hasChildNodes()) {
-        // arenaPlayer.removeChild(arenaPlayer.firstChild);
-        arenaPlayer.innerHTML = '';
-      } 
-      arenaPlayer.appendChild(clonedTemplate);
-
-      break;
-    }
-  }
   players[0].choice = type;
+  cloneTemplate(players[0]); 
 }
 
 function randomFromArray(arr) {
@@ -85,19 +90,7 @@ function randomFromArray(arr) {
 
 function setComputerChoice() {
   players[1].choice = randomFromArray(options);
-  
-  for(let i = 0; i < templates.length; i++) {
-    if(templates[i].id === players[1].choice) {
-      let clonedTemplate = templates[i].content.cloneNode(true);
-      if(arenaOpponent.hasChildNodes()) {
-        // arenaOpponent.removeChild(arenaOpponent.firstChild);
-        arenaOpponent.innerHTML = '';
-      } 
-      arenaOpponent.appendChild(clonedTemplate);
-
-      break;
-    }
-  }  
+  cloneTemplate(players[1]);  
 }
 
 function compareChoices(ch1, ch2) {
