@@ -50,8 +50,7 @@ function cloneTemplate(player) {
     if(templates[i].id === player.choice) {
       let clonedTemplate = templates[i].content.cloneNode(true);
       if(player.img.hasChildNodes()) {
-        // player.img.removeChild(player.firstChild);
-        player.img.innerHTML = '';
+        player.img.removeChild(player.img.firstElementChild);
       } 
       player.img.appendChild(clonedTemplate);
 
